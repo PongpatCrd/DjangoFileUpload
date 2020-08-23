@@ -1,0 +1,21 @@
+version: '2.1'
+
+services:
+  app:
+    image: send
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment: 
+      ALLOWED_HOSTS: send localhost 127.0.0.1
+    ports:
+      - '8080:8080'
+    volumes:
+      - database:/app/database/
+      - media:/app/media
+      - static:/app/static
+
+volumes:
+  database:
+  media:
+  static:

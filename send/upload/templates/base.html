@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} Send {% endblock %}</title>
+</head>
+<body>
+  {% block form %}
+  {% endblock %}
+
+  {% if download_url and delete_url %}
+  <p>Download link: <a href="{{ download_url }}">{{ download_url }}</a></p>
+  <hr>
+  <p>Delete link: <a href="{{ delete_url }}">{{ delete_url }}</a></p>
+  {% endif %}
+</body>
+</html>

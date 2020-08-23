@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block form %}
+<h1>Download</h1>
+<form action="{% url 'download' upload.ref_key_download %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <p>Filename: <b>{{filename}}</b></p>
+
+  {% if password %}
+  <p>Password: {{form.password}}</p>
+  {% endif %}
+
+  <p><input type="submit" value="Download"></p>
+</form>
+{% endblock %}

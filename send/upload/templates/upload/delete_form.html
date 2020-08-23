@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block form %}
+<h1>Delete</h1>
+<form action="{% url 'delete' upload.ref_key_delete %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <p>Do you want to delete <b>{{filename}}?</b></p>
+  
+  <input id="delete_btn" type="submit" value="Delete">
+  <hr>
+
+</form>
+{% endblock %}

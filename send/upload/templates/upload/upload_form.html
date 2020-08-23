@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block form %}
+<h1>Upload</h1>
+<form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+	<p>{{form.file}}</p>
+	<p>Password: {{form.password}} (optional)</p>
+	<p>Expires in: {{form.max_downloads}} or {{form.expire_duration}}</p>
+	<p><input type="submit" value="Upload"></p>
+</form>
+{% endblock %}
