@@ -3,6 +3,8 @@ version: '2.1'
 services:
   app:
     image: send
+    environment:
+      DEBUG: 0
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,9 +13,20 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - database:/app/database/
-      - media:/app/media
-      - static:/app/static
+      - database:/app/send/database
+      - media:/app/send/media
+      - static:/app/send/static
+
+  jobs:
+    image: jobs
+    environment:
+      SLEEP_TIME_IN_SEC: 60
+    build: 
+      context: .
+      dockerfile: Dockerfile_jobs
+    volumes:
+      - database:/app/send/database
+      - media:/app/send/media
 
 volumes:
   database:

@@ -31,7 +31,6 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default="localhost").split(' ')
 # Application definition
 
 INSTALLED_APPS = [
-    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -108,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Bangkok'
+TIME_ZONE = os.getenv("TZ", 'Asia/Bangkok')
 
 USE_I18N = True
 
@@ -125,7 +124,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-CRONJOBS = [
-    ('*/1 * * * *', 'upload.cron.clear_expire_files')
-]
